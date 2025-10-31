@@ -8,6 +8,6 @@ func main() {
 	core.MakeAndPlay(With())
 }
 
-// less troubling. doesn't made me
+// less troubling. doesn't make me
 // think about how the gum is made
 // acceptable as walk and chew gum
