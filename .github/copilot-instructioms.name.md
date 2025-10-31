@@ -15,5 +15,4 @@ lumpy pockets or hot dog
 tag no-hotdog-not-hotdog
 
 make a significant attempt 
-avoid forein wretched verb
-
+avoid forein wretched verb[citation needed]
