@@ -1,11 +1,9 @@
 package main
 
-import (
-	"jam/internal/core"
-)
+import "jam/internal/core"
 
 func main() {
-	core.MakeAndPlay(With())
+	core.Play(With())
 }
 
 // less troubling. doesn't make me
