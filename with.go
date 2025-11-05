@@ -1,7 +1,11 @@
 package main
 
-func With() SomeFun {
-	return SomeFun{
-		Assets(),
+import (
+	"jam/internal/tech/efx"
+)
+
+func With() []*efx.Def {
+	return []*efx.Def{
+		refsWith(),
 	}
 }
