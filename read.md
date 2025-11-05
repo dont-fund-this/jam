@@ -1,5 +1,5 @@
 # 
-
+```
  ----------------|----------------------------------------------------------------------------------
 | `main.go`             | main entry point          |\                                              |
 | `with.go`             | top level wiring          |- these are the jam                            |
@@ -20,6 +20,7 @@
 | `make test`           | the only way to go fast (irony not intended)                              |
 | `.considerate.thirds` | the quiet part outloud ina place for things that are not cleaned          |
  -----------------------|--------------------------------------------------------------------------- 
+```
 
 less screaming more comic sans,
 behind the wooshop with papyrus.  
