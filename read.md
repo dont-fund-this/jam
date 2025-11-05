@@ -20,7 +20,6 @@
 | `make test`           | the only way to go fast (irony not intended)                              |
 | `.considerate.thirds` | the quiet part outloud ina place for things that are not cleaned          |
  -----------------------|--------------------------------------------------------------------------- 
-```
 
 less screaming more comic sans,
 behind the wooshop with papyrus.  
@@ -28,3 +27,5 @@ this could be a low throaty coo
 still some screaming, just less.
 tags: [mcsweeneys.net/articles/im-comic-sans-asshole]
 todo: move things like this into .considerate.thirds/
+
+```
