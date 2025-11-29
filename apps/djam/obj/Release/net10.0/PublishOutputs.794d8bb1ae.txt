@@ -1,5 +1,0 @@
-/Users/bubbles/dev/jam/dist/djam
-/Users/bubbles/dev/jam/dist/djam.dll
-/Users/bubbles/dev/jam/dist/djam.deps.json
-/Users/bubbles/dev/jam/dist/djam.runtimeconfig.json
-/Users/bubbles/dev/jam/dist/djam.pdb
