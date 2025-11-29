@@ -1,9 +1,9 @@
 LIBS := $(filter-out libs/TEMPLATE.mk,$(wildcard libs/*))
-APPS := $(filter-out apps/not-hot-dog,$(wildcard apps/*))
+APPS := $(filter-out apps/Makefile,$(wildcard apps/*))
 CODE_ZIP := refs/code/code.zip
 
-.PHONY: all all-hosts clean clean-hosts run-cjam run-gjam run-rjam run-njam run-pjam run-jjam run-djam run-kjam run-sjam run-ljam run-zjam run-hjam run-ojam run-vjam run
-.PHONY: libs cjam gjam rjam njam pjam jjam djam kjam sjam ljam zjam hjam ojam vjam
+.PHONY: all all-hosts clean clean-hosts run run-cjam run-gjam run-rjam run-njam run-pjam run-jjam run-djam run-kjam run-sjam run-ljam run-zjam run-hjam run-ojam run-vjam
+.PHONY: libs apps $(APPS)
 .PHONY: test-none test-control-only test-all
 .PHONY: bench-cjam bench-gjam bench-rjam bench-njam bench-pjam bench-jjam bench-djam bench-kjam bench-sjam bench-ljam bench-zjam bench-hjam bench-ojam bench-vjam bench-all
 .PHONY: deps-fetch deps-build deps-check deps-clean
@@ -14,56 +14,27 @@ CODE_ZIP := refs/code/code.zip
 all: libs cjam
 
 # Build all hosts (all languages)
-all-hosts: libs cjam gjam rjam njam pjam jjam djam kjam sjam ljam zjam hjam ojam vjam
+all-hosts: libs apps
+
+apps: libs
+	$(MAKE) -C apps all
+
+# Pattern rule: any target matching an app directory builds that app
+$(APPS): libs
+	$(MAKE) -C apps/$@
+
+# Shorthand targets: map cjam -> apps/cjam, gjam -> apps/gjam, etc.
+cjam gjam rjam njam pjam jjam djam kjam sjam ljam zjam hjam ojam vjam: libs
+	$(MAKE) -C apps/$@
 
 libs:
+	@for dir in $(LIBS); do $(MAKE) -C $$dir pre-build; done
 	@for dir in $(LIBS); do $(MAKE) -C $$dir; done
 
-cjam: libs
-	$(MAKE) -C apps/cjam
 
-gjam: libs
-	$(MAKE) -C apps/gjam
-
-rjam: libs
-	$(MAKE) -C apps/rjam
-
-njam: libs
-	$(MAKE) -C apps/njam
-
-pjam: libs
-	$(MAKE) -C apps/pjam
-
-jjam: libs
-	$(MAKE) -C apps/jjam
-
-djam: libs
-	$(MAKE) -C apps/djam
-
-kjam: libs
-	$(MAKE) -C apps/kjam
-
-sjam: libs
-	$(MAKE) -C apps/sjam
-
-ljam: libs
-	$(MAKE) -C apps/ljam
-
-zjam: libs
-	$(MAKE) -C apps/zjam
-
-hjam: libs
-	$(MAKE) -C apps/hjam
-
-ojam: libs
-	$(MAKE) -C apps/ojam
-
-vjam: libs
-	$(MAKE) -C apps/vjam
 
 clean-hosts:
-	rm -f dist/cjam dist/gjam dist/rjam dist/njam dist/pjam dist/jjam dist/djam* dist/kjam* dist/sjam dist/ljam dist/zjam dist/hjam dist/ojam dist/vjam
-	rm -f dist/jna-*.jar
+	rm -rf dist/
 
 clean:
 	@for dir in $(LIBS); do $(MAKE) -C $$dir clean 2>/dev/null || true; done
@@ -162,32 +133,16 @@ test-llm-32:
 #
 # Dependency management targets
 deps-fetch:
-	@echo "=== Fetching Dependencies ==="
-	@$(MAKE) -C deps/cef fetch
-	@$(MAKE) -C deps/godot fetch
-	@$(MAKE) -C deps/llama.cpp fetch
-	@$(MAKE) -C deps/whisper.cpp fetch
+	$(MAKE) -C deps fetch
 
 deps-build:
-	@echo "=== Building Dependencies ==="
-	@$(MAKE) -C deps/cef build
-	@$(MAKE) -C deps/godot build
-	@$(MAKE) -C deps/llama.cpp build
-	@$(MAKE) -C deps/whisper.cpp build
+	$(MAKE) -C deps build
 
 deps-check:
-	@echo "=== Checking Dependencies ==="
-	@$(MAKE) -C deps/cef check 2>/dev/null || true
-	@$(MAKE) -C deps/godot check 2>/dev/null || true
-	@$(MAKE) -C deps/llama.cpp check 2>/dev/null || true
-	@$(MAKE) -C deps/whisper.cpp check 2>/dev/null || true
+	$(MAKE) -C deps check
 
 deps-clean:
-	@echo "=== Cleaning Dependencies ==="
-	@$(MAKE) -C deps/cef clean
-	@$(MAKE) -C deps/godot clean
-	@$(MAKE) -C deps/llama.cpp clean
-	@$(MAKE) -C deps/whisper.cpp clean
+	$(MAKE) -C deps clean
 
 #
 # Benchmark targets - template for all hosts
@@ -214,20 +169,7 @@ bench-$(1):
 endef
 
 bench-all:
-	@$(MAKE) bench-cjam
-	@$(MAKE) bench-gjam
-	@$(MAKE) bench-rjam
-	@$(MAKE) bench-njam
-	@$(MAKE) bench-pjam
-	@$(MAKE) bench-jjam
-	@$(MAKE) bench-djam
-	@$(MAKE) bench-kjam
-	@$(MAKE) bench-sjam
-	@$(MAKE) bench-ljam
-	@$(MAKE) bench-zjam
-	@$(MAKE) bench-hjam
-	@$(MAKE) bench-ojam
-	@$(MAKE) bench-vjam
+	@for app in $(APPS); do $(MAKE) bench-$$app; done
 
 #
 # Egg targets - package clean source code
