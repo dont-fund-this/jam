@@ -16,9 +16,11 @@ OBJ := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 DIST_DIR := ../../dist
 TARGET := $(DIST_DIR)/libege.dylib
 
-.PHONY: all clean
+.PHONY: all clean pre-build
 
 all: $(TARGET)
+
+pre-build:
 
 $(TARGET): $(OBJ) ../../deps/godot/build/libgodot.a
 	@mkdir -p $(DIST_DIR)
