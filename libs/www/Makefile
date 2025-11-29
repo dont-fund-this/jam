@@ -17,9 +17,11 @@ OBJ := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 DIST_DIR := ../../dist
 TARGET := $(DIST_DIR)/libwww.dylib
 
-.PHONY: all clean
+.PHONY: all clean pre-build
 
 all: $(TARGET)
+
+pre-build:
 
 $(TARGET): $(OBJ)
 	@mkdir -p $(DIST_DIR)
