@@ -1,0 +1,149 @@
+// Test LLM library
+#include <iostream>
+#include <string>
+#include <dlfcn.h>
+
+using DispatchFn = const char* (*)(const char*, const char*, const char*);
+using AttachFn = bool (*)(DispatchFn, char*, size_t);
+using InvokeFn = const char* (*)(const char*, const char*, const char*);
+
+const char* my_dispatch32(const char* address, const char* payload, const char* options) {
+    // Simple dispatcher - load the library and call it
+    static void* efs_handle = nullptr;
+    static InvokeFn efs_invoke = nullptr;
+    
+    if (!efs_handle) {
+        efs_handle = dlopen("dist/libefs.dylib", RTLD_LAZY);
+        if (efs_handle) {
+            efs_invoke = (InvokeFn)dlsym(efs_handle, "Invoke");
+        }
+    }
+    
+    if (efs_invoke && strncmp(address, "efs.", 4) == 0) {
+        return efs_invoke(address, payload, options);
+    }
+    
+    return nullptr;
+}
+
+std::string extract_context_id(const char* result) {
+    if (!result) return "";
+    std::string result_str(result);
+    size_t id_pos = result_str.find("\"context_id\":\"");
+    if (id_pos == std::string::npos) return "";
+    id_pos += 14; // length of "context_id":"
+    size_t id_end = result_str.find("\"", id_pos);
+    return result_str.substr(id_pos, id_end - id_pos);
+}
+
+void test_text_model(InvokeFn invoke, const char* model_name, const char* prompt) {
+    std::cout << "\n=== TEST: Load " << model_name << " model ===" << std::endl;
+    const char* result = invoke("llm.load", model_name, nullptr);
+    std::cout << "Load result: " << (result ? result : "null") << std::endl;
+    
+    if (result && std::string(result).find("success") != std::string::npos) {
+        std::string context_id = extract_context_id(result);
+        if (!context_id.empty()) {
+            std::cout << "\n=== TEST: Query " << model_name << " ===" << std::endl;
+            std::string query = R"({"context_id":")" + context_id + R"(","prompt":")" + prompt + R"("})";
+            result = invoke("llm.query", query.c_str(), nullptr);
+            
+            // Extract and print just the generated text
+            if (result) {
+                std::string result_str(result);
+                size_t text_pos = result_str.find("\"text\":\"");
+                if (text_pos != std::string::npos) {
+                    text_pos += 8;
+                    size_t text_end = result_str.rfind("\"");
+                    std::string text = result_str.substr(text_pos, text_end - text_pos);
+                    std::cout << "\nGenerated text:\n" << text << std::endl;
+                }
+            }
+        }
+    }
+}
+
+std::string extract_context_id(const std::string& result) {
+    size_t id_pos = result.find("\"context_id\":\"");
+    if (id_pos == std::string::npos) return "";
+    id_pos += 14; // length of "context_id":"
+    size_t id_end = result.find("\"", id_pos);
+    return result.substr(id_pos, id_end - id_pos);
+}
+
+std::string extract_text32(const std::string& result) {
+    size_t text_pos = result.find("\"text\":\"");
+    if (text_pos == std::string::npos) return "";
+    text_pos += 8; // length of "text":"
+    size_t text_end = result.find("\"}", text_pos);
+    if (text_end == std::string::npos) text_end = result.rfind("\"");
+    return result.substr(text_pos, text_end - text_pos);
+}
+
+void test_model32(InvokeFn invoke, const char* model_name, const char* prompt) {
+    std::cout << "\n=== TEST: Load " << model_name << " model ===" << std::endl;
+    const char* result = invoke("llm.load", model_name, nullptr);
+    
+    if (!result || std::string(result).find("success") == std::string::npos) {
+        std::cout << "Failed to load model: " << (result ? result : "null") << std::endl;
+        return;
+    }
+    
+    std::string context_id = extract_context_id(result);
+    if (context_id.empty()) {
+        std::cout << "Failed to extract context_id" << std::endl;
+        return;
+    }
+    
+    std::cout << "Model loaded: " << context_id << std::endl;
+    
+    // Query the model
+    std::cout << "\n=== TEST: Query " << model_name << " ===" << std::endl;
+    std::cout << "Prompt: " << prompt << std::endl;
+    std::string query = R"({"context_id":")" + context_id + R"(","prompt":")" + std::string(prompt) + R"("})";
+    result = invoke("llm.query", query.c_str(), nullptr);
+    
+    if (result && std::string(result).find("success") != std::string::npos) {
+        std::string text = extract_text32(result);
+        std::cout << "\nResponse:\n" << text << std::endl;
+    } else {
+        std::cout << "Query failed: " << (result ? result : "null") << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "=== TESTING LLM LIBRARY ===" << std::endl;
+    
+    // Load libllm
+    void* handle = dlopen("dist/libllm.dylib", RTLD_LAZY);
+    if (!handle) {
+        std::cerr << "Failed to load libllm.dylib: " << dlerror() << std::endl;
+        return 1;
+    }
+
+    AttachFn attach = (AttachFn)dlsym(handle, "Attach");
+    InvokeFn invoke = (InvokeFn)dlsym(handle, "Invoke");
+    
+    if (!attach || !invoke) {
+        std::cerr << "Failed to find required functions" << std::endl;
+        dlclose(handle);
+        return 1;
+    }
+
+    // Attach with our dispatch callback
+    char err_buf[256] = {0};
+    if (!attach(my_dispatch32, err_buf, sizeof(err_buf))) {
+        std::cerr << "Attach failed: " << err_buf << std::endl;
+        dlclose(handle);
+        return 1;
+    }
+
+    std::cout << "LLM plugin attached successfully\n" << std::endl;
+
+    // Test 32b model - detailed explanation
+    test_text_model(invoke, "32b", "Write a Python function to calculate fibonacci numbers with memoization");
+
+    dlclose(handle);
+    std::cout << "\n=== ALL TESTS COMPLETE ===" << std::endl;
+    return 0;
+}

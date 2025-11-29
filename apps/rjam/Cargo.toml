@@ -1,0 +1,11 @@
+[package]
+name = "rjam"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libloading = "0.8"
+
+[[bin]]
+name = "rjam"
+path = "src/main.rs"

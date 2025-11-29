@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+#!/usr/bin/env python3
+import ctypes
+import os
+import sys
+from pathlib import Path
+
+# Define libsinfo struct matching C layout
+class LibsInfo(ctypes.Structure):
+    _fields_ = [
+        ("plugin_type", ctypes.c_char_p),
+        ("product", ctypes.c_char_p),
+        ("description_long", ctypes.c_char_p),
+        ("description_short", ctypes.c_char_p),
+        ("plugin_id", ctypes.c_ulong)
+    ]
+
+# Define function pointer types
+InvokeFn = ctypes.CFUNCTYPE(ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p)
+AttachFn = ctypes.CFUNCTYPE(ctypes.c_int, InvokeFn, ctypes.c_char_p, ctypes.c_size_t)
+DetachFn = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_char_p, ctypes.c_size_t)
+ReportFn = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_char_p, ctypes.c_size_t, ctypes.POINTER(LibsInfo))
+
+class ControlFns:
+    def __init__(self, lib, attach, detach, invoke):
+        self.lib = lib
+        self.attach = attach
+        self.detach = detach
+        self.invoke = invoke
+
+def control_boot():
+    print("HOST: Discovering control plugin...")
+    
+    # Running from apps/pjam/, scan current directory
+    exe_dir = Path(__file__).resolve().parent
+    
+    print(f"HOST: Scanning directory: {exe_dir}")
+    
+    # Determine library extension
+    if sys.platform == "darwin":
+        lib_ext = ".dylib"
+    elif sys.platform == "win32":
+        lib_ext = ".dll"
+    else:
+        lib_ext = ".so"
+    
+    if not exe_dir.exists():
+        print(f"Error: Directory {exe_dir} does not exist", file=sys.stderr)
+        return None
+    
+    for entry in exe_dir.iterdir():
+        if not entry.is_file():
+            continue
+        
+        filename = entry.name
+        
+        if not filename.endswith(lib_ext):
+            continue
+        
+        if not filename.startswith("lib"):
+            continue
+        
+        print(f"HOST: Found candidate: {filename}")
+        
+        # Try to load library
+        try:
+            lib = ctypes.CDLL(str(entry))
+        except OSError as e:
+            print(f"HOST: Failed to load {filename}: {e}")
+            continue
+        
+        # Check for required functions
+        try:
+            attach_fn = lib.Attach
+            attach_fn.argtypes = [InvokeFn, ctypes.c_char_p, ctypes.c_size_t]
+            attach_fn.restype = ctypes.c_int
+            
+            detach_fn = lib.Detach
+            detach_fn.argtypes = [ctypes.c_char_p, ctypes.c_size_t]
+            detach_fn.restype = ctypes.c_int
+            
+            invoke_fn = lib.Invoke
+            invoke_fn.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+            invoke_fn.restype = ctypes.c_char_p
+            
+            report_fn = lib.Report
+            report_fn.argtypes = [ctypes.c_char_p, ctypes.c_size_t, ctypes.POINTER(LibsInfo)]
+            report_fn.restype = ctypes.c_int
+        except AttributeError:
+            print(f"HOST: {filename} missing required functions (Attach/Detach/Invoke/Report)")
+            continue
+        
+        print(f"HOST: {filename} has valid plugin interface")
+        
+        # Call Report to check plugin type
+        err_buf = ctypes.create_string_buffer(256)
+        info = LibsInfo()
+        result = report_fn(err_buf, len(err_buf), ctypes.byref(info))
+        
+        if result == 0:
+            err_msg = err_buf.value.decode('utf-8')
+            print(f"HOST: {filename} Report failed: {err_msg}")
+            continue
+        
+        plugin_type = info.plugin_type.decode('utf-8') if info.plugin_type else ""
+        
+        if plugin_type == "control":
+            print(f"HOST: {filename} identified as control plugin (type={plugin_type}, id=0x{info.plugin_id:x})")
+            return ControlFns(lib, attach_fn, detach_fn, invoke_fn)
+        
+        print(f"HOST: {filename} is not control plugin (type={plugin_type})")
+    
+    print(f"Error: No control plugin found in {exe_dir}", file=sys.stderr)
+    return None
+
+def control_bind(fns):
+    if not fns.attach or not fns.detach or not fns.invoke:
+        print("Error: Control plugin missing required functions", file=sys.stderr)
+        return False
+    print("Resolved control plugin functions (Attach/Detach/Invoke)")
+    return True
+
+def control_attach(fns):
+    print("Resolved control plugin functions (Attach/Detach/Invoke)")
+    
+    # Create callback wrapper - pass control's own Invoke as dispatch
+    invoke_callback = InvokeFn(lambda addr, payload, opts: fns.invoke(addr, payload, opts))
+    
+    # Call Attach
+    err_buf = ctypes.create_string_buffer(256)
+    result = fns.attach(invoke_callback, err_buf, len(err_buf))
+    
+    if result == 0:
+        err_msg = err_buf.value.decode('utf-8')
+        print(f"Error: Control plugin Attach failed: {err_msg}", file=sys.stderr)
+        return False
+    
+    print("Control plugin attached successfully")
+    return True
+
+def control_invoke(fns):
+    addr = b"control.run"
+    payload = b"{}"
+    options = b"{}"
+    
+    response = fns.invoke(addr, payload, options)
+    response_str = response.decode('utf-8') if response else ""
+    
+    print(f"Control plugin result: {response_str}")
+
+def control_detach(fns):
+    err_buf = ctypes.create_string_buffer(256)
+    fns.detach(err_buf, len(err_buf))
+
+def main():
+    print("=== PYTHON HOST ===")
+    
+    fns = control_boot()
+    if not fns:
+        sys.exit(1)
+    
+    if not control_bind(fns):
+        sys.exit(1)
+    
+    if not control_attach(fns):
+        sys.exit(1)
+    
+    control_invoke(fns)
+    control_detach(fns)
+    
+    print("=== PYTHON HOST COMPLETE ===")
+
+if __name__ == "__main__":
+    main()

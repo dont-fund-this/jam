@@ -1,0 +1,33 @@
+CXX := clang++
+CXXFLAGS := -std=c++20 -Wall -Wextra -Werror -O3 -fPIC -I.
+LDFLAGS := -dynamiclib
+
+# CEF (Chromium Embedded Framework)
+CEF_ROOT := ../../deps/cef/source
+ifneq ($(wildcard $(CEF_ROOT)/include),)
+    CXXFLAGS += -I$(CEF_ROOT)/include
+    LDFLAGS += -framework Cocoa -framework AppKit
+endif
+
+SRC := $(wildcard *.cpp)
+
+OBJ_DIR := build
+OBJ := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
+
+DIST_DIR := ../../dist
+TARGET := $(DIST_DIR)/libwww.dylib
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	@mkdir -p $(DIST_DIR)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJ)
+
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(OBJ_DIR) $(TARGET)

@@ -1,0 +1,15 @@
+/Users/bubbles/dev/jam/apps/djam/bin/Release/net10.0/djam
+/Users/bubbles/dev/jam/apps/djam/bin/Release/net10.0/djam.deps.json
+/Users/bubbles/dev/jam/apps/djam/bin/Release/net10.0/djam.runtimeconfig.json
+/Users/bubbles/dev/jam/apps/djam/bin/Release/net10.0/djam.dll
+/Users/bubbles/dev/jam/apps/djam/bin/Release/net10.0/djam.pdb
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.AssemblyInfoInputs.cache
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.AssemblyInfo.cs
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.csproj.CoreCompileInputs.cache
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.sourcelink.json
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.dll
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/refint/djam.dll
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.pdb
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/djam.genruntimeconfig.cache
+/Users/bubbles/dev/jam/apps/djam/obj/Release/net10.0/ref/djam.dll

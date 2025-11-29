@@ -1,0 +1,5 @@
+
+# tables
+
+  create table stop times              @ table/stop_times.sql
+  create table ais tracks              @ table/ais_tracks.sql

@@ -1,0 +1,168 @@
+#!/usr/bin/env luajit
+
+local ffi = require("ffi")
+
+-- C function declarations
+ffi.cdef[[
+    typedef const char* (*InvokeFn)(const char*, const char*, const char*);
+    typedef bool (*AttachFn)(InvokeFn, char*, size_t);
+    typedef bool (*DetachFn)(char*, size_t);
+    
+    typedef struct {
+        const char* plugin_type;
+        const char* product;
+        const char* description_long;
+        const char* description_short;
+        unsigned long plugin_id;
+    } LibsInfo;
+    
+    typedef bool (*ReportFn)(char*, size_t, LibsInfo*);
+    
+    void* dlopen(const char* filename, int flag);
+    void* dlsym(void* handle, const char* symbol);
+    char* dlerror(void);
+    int dlclose(void* handle);
+]]
+
+local RTLD_LAZY = 0x00001
+
+local function control_boot()
+    print("HOST: Discovering control plugin...")
+    
+    local exe_path = arg[0]
+    local exe_dir = exe_path:match("(.*/)")
+    if not exe_dir then
+        exe_dir = "./"
+    end
+    
+    print("HOST: Scanning directory: " .. exe_dir)
+    
+    local lib_ext = ".dylib"
+    if ffi.os == "Windows" then
+        lib_ext = ".dll"
+    elseif ffi.os == "Linux" then
+        lib_ext = ".so"
+    end
+    
+    local handle = io.popen("ls " .. exe_dir)
+    local files = handle:read("*a")
+    handle:close()
+    
+    for filename in files:gmatch("[^\n]+") do
+        if filename:sub(1, 3) == "lib" and filename:sub(-#lib_ext) == lib_ext then
+            print("HOST: Found candidate: " .. filename)
+            
+            local lib_path = exe_dir .. filename
+            local lib_handle = ffi.C.dlopen(lib_path, RTLD_LAZY)
+            
+            if lib_handle == nil then
+                local err = ffi.C.dlerror()
+                if err ~= nil then
+                    print("HOST: Failed to load " .. filename .. ": " .. ffi.string(err))
+                end
+            else
+                local attach_ptr = ffi.C.dlsym(lib_handle, "Attach")
+                local detach_ptr = ffi.C.dlsym(lib_handle, "Detach")
+                local invoke_ptr = ffi.C.dlsym(lib_handle, "Invoke")
+                
+                if attach_ptr == nil or detach_ptr == nil or invoke_ptr == nil then
+                    print("HOST: " .. filename .. " missing required functions (Attach/Detach/Invoke)")
+                    ffi.C.dlclose(lib_handle)
+                else
+                    print("HOST: " .. filename .. " has valid plugin interface")
+                    
+                    local report_ptr = ffi.C.dlsym(lib_handle, "Report")
+                    
+                    if report_ptr == nil then
+                        print("HOST: " .. filename .. " missing Report function")
+                        ffi.C.dlclose(lib_handle)
+                    else
+                        local report = ffi.cast("ReportFn", report_ptr)
+                        local info = ffi.new("LibsInfo")
+                        local err_buf = ffi.new("char[256]")
+                        
+                        local result = report(err_buf, 256, info)
+                        
+                        if not result then
+                            print("HOST: " .. filename .. " Report failed: " .. ffi.string(err_buf))
+                            ffi.C.dlclose(lib_handle)
+                        else
+                            if info.plugin_type ~= nil then
+                                local plugin_type = ffi.string(info.plugin_type)
+                                
+                                if plugin_type == "control" then
+                                    print(string.format("HOST: %s identified as control plugin (type=%s, id=0x%x)", 
+                                        filename, plugin_type, tonumber(info.plugin_id)))
+                                    
+                                    return {
+                                        handle = lib_handle,
+                                        attach = ffi.cast("AttachFn", attach_ptr),
+                                        detach = ffi.cast("DetachFn", detach_ptr),
+                                        invoke = ffi.cast("InvokeFn", invoke_ptr)
+                                    }
+                                end
+                                
+                                print("HOST: " .. filename .. " is not control plugin (type=" .. plugin_type .. ")")
+                            end
+                            ffi.C.dlclose(lib_handle)
+                        end
+                    end
+                end
+            end
+        end
+    end
+    
+    io.stderr:write("Error: No control plugin found in " .. exe_dir .. "\n")
+    return nil
+end
+
+local function control_bind(fns)
+    print("Resolved control plugin functions (Attach/Detach/Invoke)")
+    return true
+end
+
+local function control_attach(fns)
+    print("Resolved control plugin functions (Attach/Detach/Invoke)")
+    
+    local err_buf = ffi.new("char[256]")
+    local result = fns.attach(fns.invoke, err_buf, 256)
+    
+    if not result then
+        io.stderr:write("Error: Control plugin Attach failed: " .. ffi.string(err_buf) .. "\n")
+        return false
+    end
+    
+    print("Control plugin attached successfully")
+    return true
+end
+
+local function control_invoke(fns)
+    local response = fns.invoke("control.run", "{}", "{}")
+    print("Control plugin result: " .. ffi.string(response))
+end
+
+local function control_detach(fns)
+    local err_buf = ffi.new("char[256]")
+    fns.detach(err_buf, 256)
+    ffi.C.dlclose(fns.handle)
+end
+
+print("=== LUA HOST ===")
+
+local fns = control_boot()
+if not fns then
+    os.exit(1)
+end
+
+if not control_bind(fns) then
+    os.exit(1)
+end
+
+if not control_attach(fns) then
+    os.exit(1)
+end
+
+control_invoke(fns)
+control_detach(fns)
+
+print("=== LUA HOST COMPLETE ===")
