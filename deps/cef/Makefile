@@ -18,4 +18,4 @@ check:
 	@test -d $(SOURCE_DIR) && echo "✓ CEF" || { echo "✗ CEF (run: make -C deps/cef fetch)"; exit 1; }
 
 clean:
-	rm -rf $(SOURCE_DIR) $(ARCHIVE)
+	rm -rf $(SOURCE_DIR) $(ARCHIVE) *.tar.bz2

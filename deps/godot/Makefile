@@ -29,4 +29,4 @@ check:
 	@test -d $(SOURCE_DIR) && echo "✓ Godot" || { echo "✗ Godot (run: make -C deps/godot fetch)"; exit 1; }
 
 clean:
-	rm -rf $(SOURCE_DIR)
+	rm -rf $(SOURCE_DIR) build
