@@ -17,7 +17,7 @@ TEST_SRC := test_embed.cpp
 TEST_BIN := $(OBJ_DIR)/test_embed
 EMBED_FILE := embedded_refs.cpp
 
-.PHONY: all clean test regen-embedded
+.PHONY: all clean test pre-build regen-embedded
 
 all: $(EMBED_FILE) $(TARGET)
 
@@ -52,6 +52,9 @@ $(TEST_BIN): $(TEST_SRC)
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
 
-# Manual target to regenerate embedded_refs.cpp
-regen-embedded:
-	@$(OBJ_DIR)/generate_embedded
+# Pre-build step: regenerate embedded_refs.cpp if needed
+pre-build: $(EMBED_FILE)
+
+# Manual target to regenerate embedded_refs.cpp (alias for backwards compatibility)
+regen-embedded: $(GEN_BIN)
+	@$(GEN_BIN)
