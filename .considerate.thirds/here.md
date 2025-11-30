@@ -104,8 +104,16 @@ as a dinosaur, i didn't have any of those assumptions.
 it felt like i could do whatever i wanted without fear
 - hyperboleandahalf 2013 10 menace
 
+> theyre not gonna turn them into dicks,..
+> im gonna puta limiter on it so they cant
+< shovel with rules... thats.. really cool
+< yeah lets put as many rules in the game as we can.
+< that's super fun
+tag [no-shovel-no-rules]
+
 never buy 200 monkeys 
 not on sale, not ever
+ora shovel with rules
 
 have to wonder how many could survive continuous video surveillance 
 and be mistaken for gandhi. 
