@@ -18,15 +18,15 @@ we buy our mistakes
 sometimes you tell the people you have in mind when you name things
 sometimes you dont
 
-becasue i dont like when the people at the print shop squint at me
+because i dont like when the people at the print shop squint at me
 like im some sort of degenerate. thats why.
-assistant to adjunct intern of happy endings
+- former assistant to the adjunct intern of happy endings
 
 like one of those mind palaces
 tag [dive-bar-mind-palace]
 
 i learned like yesterday that aspergers was moved into the asd,
-it still isn't in alphetbetaical order the way it should be but
+it still isn't in alphabetical order the way it should be. but,
 a name shouldn't sound like it comes with a side of penis salad
 tag [no-ass-burgers]
 tag [no-penis-salad]
@@ -40,7 +40,7 @@ tag [no-penis-salad]
 
 scorpion survive complete water immersion for hours.
 scorpion have observable memory in hours, weeks even
-frog is hella adictive to scorpions. frog is like crack
+frog is hella addictive to scorpion. frog is like crack
 once you go frog, youre done, scorpions'll do any thing
 scorpion does not know why and is really trying. really
 tag [scorpion-frog-part-2]
