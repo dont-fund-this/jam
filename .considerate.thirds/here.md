@@ -114,6 +114,9 @@ tag [no-shovel-no-rules]
 never buy 200 monkeys 
 not on sale, not ever
 ora shovel with rules
+tag [no-monkey-not-ever]
+tag [no-sigmund-no-carl]
+tag [not-200-throw-rugs]
 
 have to wonder how many could survive continuous video surveillance 
 and be mistaken for gandhi. 
