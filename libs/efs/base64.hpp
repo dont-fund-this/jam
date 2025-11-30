@@ -1,4 +1,4 @@
-// Simple base64 encode wrapper for mono/libs/efs
+// Simple base64 encode wrapper for jam/libs/efs
 #include <string>
 #include "../../_other_/llama.cpp/common/base64.hpp"
 

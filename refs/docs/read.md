@@ -3,7 +3,7 @@
 │
 └── jam/                    # you could be anywhere, doing anything. .. and youre here.  
     │                       # ( wierdo )
-    ├── apps/               # programming across languages ( pals )
+    ├── apps/               # practice across languages ( pals )
     │   │                    lang       version        Est. Users
     │   ├── cjam/            C++        Clang 17.0.0    4.5M
     │   ├── gjam/            Go         1.25.1          3.0M

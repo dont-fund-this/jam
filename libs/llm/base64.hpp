@@ -1,4 +1,4 @@
-// Simple base64 decode wrapper for mono/libs/llm
+// Simple base64 decode wrapper for jam/libs/llm
 #include <string>
 #include "../../_other_/llama.cpp/common/base64.hpp"
 

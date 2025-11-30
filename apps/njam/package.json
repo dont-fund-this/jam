@@ -1,7 +1,7 @@
 {
   "name": "njam",
   "version": "0.1.0",
-  "description": "Node.js host for mono plugin system",
+  "description": "node jam",
   "main": "index.js",
   "type": "module",
   "scripts": {
