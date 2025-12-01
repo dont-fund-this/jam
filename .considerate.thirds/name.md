@@ -49,7 +49,7 @@ if your logo looks like a math symbol
 then you probably have a phallic logo
 tag [no-showing-3-standard-deviation]
 tag [no-logo-is-THAT-happy-to-see-me]
-tag [no-material-icon-breifs-outline]
+tag [no-material-icon-briefs-outline]
 tag [no-tighie-whitey]
 
 scorpion did look they were shaming frog at the end.
