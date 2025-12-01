@@ -21,5 +21,9 @@ like a some kind of messed up mr scary ass miyagi,
 id be looking for answers further than art vs porn
 [i-had-something-for-this]
 
+if the people who did the flying spegetti monster 
+are also the same people from the nestling, ramen      
+[oh-i-remembered]
+
 who am i, whoever produced or took the photo or was the model for the magaize that did the cover with the 
-model nude except for a bullwhip held in some way out of frame so that it kinda looked like a tail.
+model nude except for a bullwhip held in some way out of frame so that it kinda looked like a tail?
