@@ -48,9 +48,19 @@ someone in your family, walked to get water
 it is amazing water or flint water or.
 are there donuts? (that's Not a donut)
 
+which of these things is doing its own thing
+which of these things is not like the others
+which of these things is profiting on misery
+
 who is watching you leave your house
 what did you leave behind, how long?
-snoops documentary on animal planet.
+
+remember snoops documentary on animal planet,
+'ees being watched, theyre plotting right now
+
+how many hours are you the lizard bearing water?
+do you have geiko, snakes are strait up assholes
+so are the butchers making rapey parts from kids
 
 bet it was not amazing water like not often or ever
 guessing the sidewalk was a slick as snot dirt path
