@@ -45,6 +45,13 @@ how many times did john wick click THat clicker
 what are the average numbers of hour where
 someone in your family, walked to get water
 
+or what are the average number of hours where
+your family walks thru any neighborhood where 
+they are hurded into vans by people in masks?
+
+show me evidence they are being harvested
+show me evidence they are NOT. your move.
+
 it is amazing water or flint water or.
 are there donuts? (that's Not a donut)
 
@@ -68,5 +75,7 @@ broken rocks thru dengue carryig inserts, both ways
 
 if there is anything even remotely ironically iteresting here
 it's that ohio and also california serial killers scare them.
+
 gozilla vs giant nope nope fuck that nope nope hornets version 
+
 blows my mind
