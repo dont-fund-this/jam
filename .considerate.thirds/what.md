@@ -7,7 +7,7 @@ what takes all the air outta yer room
   if you dont have enough you think about nothing else.
   if you have enough you never think about it
 
-if it wasnt for money, what would get you outta bed
+if it wasnt for money* what would get you outta bed
 every day for years as needed, really lean into it.
 what would you, not ever really be done practicing.
 
@@ -40,3 +40,23 @@ does that in any way match accidental deaths?
 i pass a lot of hospitals. 1000s of rooms each.
 booked solid, weeks and months or double booked
 but i pass dramatically fewer traffic accidents 
+how many times did john wick click THat clicker
+
+what are the average numbers of hour where
+someone in your family, walked to get water
+
+it is amazing water or flint water or.
+are there donuts? (that's Not a donut)
+
+who is watching you leave your house
+what did you leave behind, how long?
+snoops documentary on animal planet.
+
+bet it was not amazing water like not often or ever
+guessing the sidewalk was a slick as snot dirt path
+broken rocks thru dengue carryig inserts, both ways
+
+if there is anything even remotely ironically iteresting here
+it's that ohio and also california serial killers scare them.
+gozilla vs giant nope nope fuck that nope nope hornets version 
+blows my mind
