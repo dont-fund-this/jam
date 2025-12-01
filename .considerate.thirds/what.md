@@ -22,7 +22,7 @@ pull that thread, it troubles me. a lot.
 
 i would love to be wrong about this one.
 fact check, real hard, tell me i'm wrong
-explain it to me slow, i was born in ohio
+explain it to me slow i was born in ohio
 
 is there a correlastion between shipping containers of live cargo,
 and either the price of or number of hospital operations available
@@ -34,9 +34,9 @@ who is checking on our pals. that they were not
 
 when people we don't know are hurded into trucks, 
 when we need a tendon, when we need a new eyehole 
-we plan that stuff, weeks and weeks out, we fly.
-does that in any way match accidently deaths?
+we plan that stuff, weeks and weeks out or we fly
+does that in any way match accidental deaths?  
 
 i pass a lot of hospitals. 1000s of rooms each.
-booked solid, weeks and months, double booked.
+booked solid, weeks and months or double booked
 but i pass dramatically fewer traffic accidents 
