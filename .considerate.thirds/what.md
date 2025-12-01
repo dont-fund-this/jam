@@ -74,7 +74,7 @@ guessing the sidewalk was a slick as snot dirt path
 broken rocks thru dengue carryig inserts, both ways
 
 there is no way, none, that Chase Bank is involved
-i am 1000% certain that Chase Bank is not involved
+i am 1000% certain that Chase Bank is not involved **
 
 there even less chance 300 million and 23 of our pals,
 should ever wonder if they are on any rapey parts list
@@ -89,3 +89,11 @@ it's that ohio and also california serial killers scare them.
 gozilla vs giant nope nope fuck that nope nope hornets version 
 
 blows my mind
+
+** that it shows, either they are involved & mindful,
+maybe chase red spears blue shilds keep its head down
+if they are not, then i am dissapointed not surprised.
+maybe they wear capes indoors so they dont get sniped.
+if you are a bank and not involved, it's not too late.
+[not-trying-to-pick-fights-with-peope-who-buy-ink-by-the-barrel]
+[try-to-not-get-any-more-of-your-pal-melted-in-any-more-barrels]
