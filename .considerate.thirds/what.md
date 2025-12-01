@@ -73,6 +73,16 @@ bet it was not amazing water like not often or ever
 guessing the sidewalk was a slick as snot dirt path
 broken rocks thru dengue carryig inserts, both ways
 
+there is no way, none, that Chase Bank is involved
+i am 1000% certain that Chase Bank is not involved
+
+there even less chance 300 million and 23 of our pals,
+should ever wonder if they are on any rapey parts list
+
+no way, none that anyone at any insurance company you pay
+is not also by accident or on purpose exposing your parts
+list to people who are very very curious abut your liver.
+
 if there is anything even remotely ironically iteresting here
 it's that ohio and also california serial killers scare them.
 
