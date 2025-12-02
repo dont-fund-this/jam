@@ -23,11 +23,11 @@ please dont shame me
 - then they gentle/savage took like 100kg of baggage, politely.
 
 verify then trust
+rinse and repeat.
 
 treat it as if the bad times are here to stay
 
 we dont solve problems in the same emotional state as when they started
-
 we buy our mistakes
 
 there is no such thing as a temporary lack of character
