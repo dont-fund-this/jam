@@ -12,15 +12,13 @@ someplace in the middle
 `cora's ultimate navigation thingy`
 , .. mistakes were made?
 
-we buy our mistakes
-- jw
-
 sometimes you tell the people you have in mind when you name things
 sometimes you dont
 
 because i dont like when the people at the print shop squint at me
 like im some sort of degenerate. thats why.
 - former assistant to the adjunct intern of happy endings
+- dont ask how i got promoted twice in such a short time.
 
 like one of those mind palaces
 tag [dive-bar-mind-palace]
