@@ -2,7 +2,7 @@
 A: rapey parts.
 
 what is actually worth working for
-what takes all the air outta yer room
+what takes all the air out of you?
 
   if you dont have enough you think about nothing else.
   if you have enough you never think about it
