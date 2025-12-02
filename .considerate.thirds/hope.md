@@ -1,4 +1,4 @@
-# considerate thirds, here
+# considerate thirds, hope
 
 the two most important things for an app are the name and icon
 - thomas
@@ -22,7 +22,7 @@ and i want it back
 - ian
 
 its a pimp ass newsreader ( pan )
-- matt, son of eagles
+- son of eagles
 
 my hobby: whenever anyone calls something an [adjective]-ass [noun], 
 i mentally move the hyphen one word to the right
@@ -81,6 +81,9 @@ its a victimless crime like,
 punching someone in the dark
 - [citation needed]
 
+jag skulle vilja hyra en bläckfisk i smutsiga underkläder
+- alan & shane
+
 testdatabaser är för fegisar
 - folktandvården dalarna
 
@@ -95,7 +98,7 @@ no, if yer slow the lion will eat you
 
 this is wrong
 very very wrong
-- the oatmeal, how to ride a pony
+- how to ride a pony
 
 - things you never try twice
 - the oatmeal

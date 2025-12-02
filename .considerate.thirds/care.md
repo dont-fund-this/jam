@@ -1,19 +1,18 @@
 
-when you are able to pay back the things you were given
-when you are able to pay back the things you learned
-when you are able to provide shelter 
-when you are able to provide warmth
-when you are able to nurish
+
+when you are able to pay back the things you were given,
+when you are able to pay forward the things you learned,
+when you are able to provide shelter, warmth, nurishment  
 [warm-debt]
 
-when you all able, when you can
-when you are allowed to ask for a favor
 when you have autonomy to do meaningful work
-[warm-debt]
+when you are allowed to ask for a favor
+[warm]
 
 when you see that you played a part even unintentionally
 when you turn around and see where your impact disrupted
 when you turn around and see how disruption was a option
+[warm-debt]
 
 swedes have a saying for pissing yerself to stay warm in the snow
 also i learned how ask to rent an octopus wearing dirty underwear
