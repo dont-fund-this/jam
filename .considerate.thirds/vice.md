@@ -5,3 +5,7 @@ does it go in a vending machine
 how abouta horse or boat prefix
 or if it ends with egg or milk.
 []
+
+vibe self distance
+vibe integrity
+vibe character

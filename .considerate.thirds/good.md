@@ -77,7 +77,7 @@ any sense of wealth.
 
 my anger is my test.
 
-not if. when i do - how quickly
+not if. when i am - how quickly
 do i use intimidation or blame?
 
 i used anger, my anger used me 
@@ -170,12 +170,10 @@ while i am able to be the purse, i
 am able to offer all i have to your family
 am able to offer all i know to both family
 
-while i am able see that i am my anger
+while i am able see that i am my anger i
    strive to never fix anything while i am still
   in the same emotional state as when it started
-  else i risk everything, for any family near me
-
-
+  else i risk everything, for ANY family near me
 
 did you hear about the two firefighters?
 spoiler & plot twists,  
@@ -183,11 +181,6 @@ i am both of them later in that series
 so are you 
 
 how about the frog and scorpion?
-spoiler & plot twists,  
-i am both of them later in that series
-so are you 
-
-oooo or the one about almost anything
 spoiler & plot twists,  
 i am both of them later in that series
 so are you 
