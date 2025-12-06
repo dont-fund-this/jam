@@ -19,3 +19,7 @@ also i learned how ask to rent an octopus wearing dirty underwear
 (before any other swedish phrase). it isn't any wierder than ohio
 i suspect that paying back your warm debts for warmth is cleaner. 
 [jag-skulle-vilja-hyra-en-bläckfisk-i-smutsiga-underkläder]
+
+are you sure it's not something like 
+'kinds of behavior that work in a specialized environment 
+can fail to work and in fact become harmful when used outside such an environment'
