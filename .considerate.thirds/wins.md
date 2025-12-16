@@ -97,3 +97,16 @@ maybe they wear capes indoors so they dont get sniped.
 if you are a bank and not involved, it's not too late.
 [not-trying-to-pick-fights-with-peope-who-buy-ink-by-the-barrel]
 [try-to-not-get-any-more-of-your-pal-melted-in-any-more-barrels]
+
+
+if we all open all of our wifi as our street or nickname or,
+id rather exlpain helping a kid get internet access without 
+anyone needing to ask 
+
+am way less worried that someone close might 
+not know how to ask for internet so their kid 
+or parent or grandparnet or come on, there are
+very few reasons to horde internet access
+
+windows open when able and safe
+internet open in the same ways
