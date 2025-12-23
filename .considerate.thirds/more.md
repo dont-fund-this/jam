@@ -18,6 +18,14 @@ sure, the squeaky wheel get some oil.
 then they replace some or all wheels.
 a nail thats sticking up gets pounded
 
+asking for a conversation in some parts of the world looks 
+differnt than others. learn how to ask. 
+jail is not rad. worst marriot ever.
+you do not want to get put in the quiet room.
+0 stars.  would not recommend.
+[nobody-likes-the-quiet-room]
+[dont-get-put-in-the-quiet-room]
+
 please dont shame me
 - a 34kg woman checking my and another ego at the door. firmly.
 - then they gentle/savage took like 100kg of baggage, politely.
