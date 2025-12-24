@@ -184,3 +184,17 @@ how about the frog and scorpion?
 spoiler & plot twists,  
 i am both of them later in that series
 so are you 
+
+[day-4-still]
+
+if solomon grundy was born on a monday, that could be day 0.
+if they were christened on tuesday, that couldve been day 1.
+then if they were married on wednesday
+and then if they took ill on thursday,
+grew worse on friday,
+and died on saturday.
+they could have been buried on sunday,
+if that was the end of solomon grundy.
+
+unless solomon grundy was indexed at 1.
+is solomon grundy 0-based or 1-based or
