@@ -11,6 +11,7 @@ someplace in the middle
 
 `cora's ultimate navigation thingy`
 , .. mistakes were made?
+use aang's ultimate navigation thingnext time
 
 sometimes you tell the people you have in mind when you name things
 sometimes you dont
@@ -67,4 +68,5 @@ avoid forein wretched verb
 both local and abroad )
 tag [citation-needed]
 
-
+nasa took me to work today.
+did not see that one coming
