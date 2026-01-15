@@ -23,3 +23,22 @@ i suspect that paying back your warm debts for warmth is cleaner.
 are you sure it's not something like 
 'kinds of behavior that work in a specialized environment 
 can fail to work and in fact become harmful when used outside such an environment'
+
+when you look in your neighbors window, you see your reflection
+or i am a weirdo in at least one place, the absense of curtains 
+is how at least one village/city stays safer.
+
+attempt to disarm what was previously presented with less attempt.
+solve for the websiteisdown when there is no sort by.
+add a shovel in your mythic interface.
+
+how many language and culture can you avoid insulting outright.
+
+pointing at older inappropriate humor seems, 
+almost, to do less harm.
+it isn't unapologetic or apologetic.
+
+without hiding or pretending. if you learned what are now called 
+'old things' without losing the link to the source
+
+show your work
